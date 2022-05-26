@@ -1,6 +1,10 @@
+import { set as setStorage } from './storage';
+
 const $todos = document.querySelector('#todos');
 
 const printTodos = (todos) => {
+  setStorage(todos);
+
   const html = todos.map((todo, index) => {
     const isDoneClass = todo.isDone ? 'checked' : '';
     return `

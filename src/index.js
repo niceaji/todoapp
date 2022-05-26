@@ -2,8 +2,9 @@ import { log } from './utils';
 import { printTodos } from './print-todos';
 import { init as initForm } from './form';
 import './todos.css';
+import { get as getStorage } from './storage';
 
-const todos = [];
+const todos = getStorage() || [];
 
 const deleteTodo = (index) => {
   console.log('delete', index);
