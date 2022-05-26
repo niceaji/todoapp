@@ -3,11 +3,7 @@ import { printTodos } from './print-todos';
 import { init as initForm } from './form';
 import './todos.css';
 
-const todos = [
-  { title: 'HTML', isDone: false },
-  { title: 'JS', isDone: true },
-  { title: 'React', isDone: true },
-];
+const todos = [];
 
 const deleteTodo = (index) => {
   console.log('delete', index);
