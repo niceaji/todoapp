@@ -1,31 +1,13 @@
 import { log } from './utils';
 import { printTodos } from './print-todos';
+import { init as initForm } from './form';
 import './todos.css';
 
 const todos = [
-  { title: 'HTML', isDone: true },
+  { title: 'HTML', isDone: false },
   { title: 'JS', isDone: true },
   { title: 'React', isDone: true },
 ];
-
-const $form = document.querySelector('.new-task');
-const $input = document.querySelector('.new-task > input');
-
-const checkTodo = (event) => {
-  event.preventDefault();
-  console.log($input.value);
-
-  // todo 추가
-  const todo = { title: $input.value, isDone: false };
-  todos.push(todo);
-  console.log(todos);
-
-  // input 초기화
-  $input.value = '';
-
-  // todos 출력
-  print();
-};
 
 const deleteTodo = (index) => {
   console.log('delete', index);
@@ -33,17 +15,16 @@ const deleteTodo = (index) => {
   todos.splice(index, 1);
   print();
 };
-const toggleTodo = () => {
-  console.log('toggle');
-};
 
 const print = () => {
   printTodos(todos);
 };
-//
-// 폼,input 입력 이벤트 추가하기
-// 입력했을때 todo추가
-$form.addEventListener('submit', checkTodo);
+const toggleTodo = (index) => {
+  console.log('toggle');
+  // index에 맞는 todo.isDone 반전
+  todos[index].isDone = !todos[index].isDone;
+  print();
+};
 
 // 삭제,isDone
 document.body.addEventListener('click', (event) => {
@@ -55,5 +36,6 @@ document.body.addEventListener('click', (event) => {
   }
 });
 
+initForm(todos);
 // todos 출력
 print();
