@@ -7,9 +7,6 @@ const todos = [
   { title: 'React', isDone: true },
 ];
 
-//
-// 폼,input 입력 이벤트 추가하기
-// 입력했을때 todo추가
 const $form = document.querySelector('.new-task');
 const $input = document.querySelector('.new-task > input');
 const $todos = document.querySelector('#todos');
@@ -44,7 +41,21 @@ const checkTodo = (event) => {
   printTodos();
 };
 
+//
+// 폼,input 입력 이벤트 추가하기
+// 입력했을때 todo추가
 $form.addEventListener('submit', checkTodo);
+
+const deleteTodo = () => {
+  console.log('delete');
+};
+
+// 삭제
+document.body.addEventListener('click', (event) => {
+  if (event.target.className === 'delete') {
+    deleteTodo();
+  }
+});
 
 // todos 출력
 printTodos();
